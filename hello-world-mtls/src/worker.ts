@@ -45,6 +45,8 @@ async function run({
   console.log('Worker connection successfully established');
 
   await worker.run();
+  // Teardown the connection and free the SDK's native runtime
+  await connection.close();
 }
 
 run(getEnv()).catch((err) => {
